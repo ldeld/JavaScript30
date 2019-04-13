@@ -31,13 +31,14 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    inventors.filter(obj => 1500 <= obj.year && obj.year < 1600);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
-
+    inventors.map(inv => [inv.first, inv.last]);
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+    inventors.sort(inv => inv.year).reverse();
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
 
@@ -53,7 +54,12 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    const freqs = data.reduce((object, transport) => {
+      console.log(object, transport)
+      if (!object[transport]) { object[transport] = 0 };
+      object[transport] += 1;
+      return object;
+    }, {})
   </script>
 </body>
 </html>
